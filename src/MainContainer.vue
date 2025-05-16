@@ -10,7 +10,11 @@ import { RouterView } from 'vue-router'
       <div class="user-profile"></div>
     </header>
     <div class="content-area">
-      <RouterView />
+      <RouterView v-slot="{ Component }">
+        <transition name="fade" mode="out-in">
+          <component :is="Component" />
+        </transition>
+      </RouterView>
     </div>
   </main>
 </template>

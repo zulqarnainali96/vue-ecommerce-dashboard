@@ -6,13 +6,19 @@
         <span class="icon">📊</span>
         <span class="text">Dashboard</span>
       </router-link>
+
+      <router-link to="/revenue" class="nav-item" active-class="active">
+        <span class="icon">📊</span>
+        <span class="text">Revenue</span>
+      </router-link>
+
       <router-link to="/inventory" class="nav-item" active-class="active">
         <span class="icon">🛍️</span>
         <span class="text">Inventory</span>
       </router-link>
-      <router-link to="/orders" class="nav-item" active-class="active">
+      <router-link to="/products" class="nav-item" active-class="active">
         <span class="icon">📦</span>
-        <span class="text">Orders</span>
+        <span class="text">Products</span>
       </router-link>
       <router-link to="/settings" class="nav-item" active-class="active">
         <span class="icon">⚙️</span>
