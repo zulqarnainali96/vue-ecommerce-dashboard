@@ -1,3 +1,10 @@
+<script setup>
+import { useInventoryStore } from '../../stores/useInventoryStore'
+
+const store = useInventoryStore()
+</script>
+
+
 <template>
   <div class="inventory-filter">
     <div class="search-box">
@@ -28,11 +35,6 @@
   </div>
 </template>
 
-<script setup>
-import { useInventoryStore } from '../../stores/useInventoryStore'
-
-const store = useInventoryStore()
-</script>
 
 <style scoped>
 .inventory-filter {

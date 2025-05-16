@@ -1,36 +1,3 @@
-<template>
-  <div class="success-container">
-    <div class="success-card">
-      <div class="success-icon">
-        <svg viewBox="0 0 24 24">
-          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-        </svg>
-      </div>
-      
-      <h2 class="success-title">Product Registered Successfully!</h2>
-      
-      <p class="success-message">
-        The new product has been added to your inventory and is now available across the dashboard.
-      </p>
-      
-      <div class="success-actions">
-        <button 
-          @click="handleContinue" 
-          class="continue-btn"
-        >
-          Add Another Product
-        </button>
-        <router-link 
-          to="/inventory" 
-          class="inventory-link"
-        >
-          View Inventory
-        </router-link>
-      </div>
-    </div>
-  </div>
-</template>
-
 <script setup>
 const emit = defineEmits(['continue'])
 
@@ -38,6 +5,36 @@ function handleContinue() {
   emit('continue')
 }
 </script>
+
+<template>
+  <div class="success-container">
+    <div class="success-card">
+      <div class="success-icon">
+        <svg viewBox="0 0 24 24">
+          <path
+            d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+        </svg>
+      </div>
+
+      <h2 class="success-title">Product Registered Successfully!</h2>
+
+      <p class="success-message">
+        The new product has been added to your inventory and is now available across the dashboard.
+      </p>
+
+      <div class="success-actions">
+        <button @click="handleContinue" class="continue-btn">
+          Add Another Product
+        </button>
+        <router-link to="/inventory" class="inventory-link">
+          View Inventory
+        </router-link>
+      </div>
+    </div>
+  </div>
+</template>
+
+
 
 <style scoped>
 .success-container {
@@ -129,12 +126,12 @@ function handleContinue() {
   .success-card {
     padding: 30px 20px;
   }
-  
+
   .success-icon {
     width: 60px;
     height: 60px;
   }
-  
+
   .success-title {
     font-size: 1.3rem;
   }

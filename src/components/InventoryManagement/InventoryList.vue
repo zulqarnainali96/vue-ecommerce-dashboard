@@ -1,56 +1,15 @@
-<template>
-  <div class="inventory-list">
-    <div class="list-header">
-      <p v-if="store.showLowStockOnly" class="low-stock-warning">
-        Showing only low stock items ({{ store.filteredProducts.length }})
-      </p>
-      <p v-else>
-        Showing {{ store.filteredProducts.length }} products
-      </p>
-    </div>
-    
-    <table>
-      <thead>
-        <tr>
-          <th @click="setSort('name')">
-            Product Name 
-            <SortIndicator field="name" />
-          </th>
-          <th @click="setSort('category')">
-            Category 
-            <SortIndicator field="category" />
-          </th>
-          <th @click="setSort('price')">
-            Price 
-            <SortIndicator field="price" />
-          </th>
-          <th @click="setSort('stock')">
-            Stock 
-            <SortIndicator field="stock" />
-          </th>
-          <th>Status</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        <InventoryItem 
-          v-for="product in store.filteredProducts" 
-          :key="product.id" 
-          :product="product"
-          @update="openModal(product)"
-        />
-      </tbody>
-    </table>
-  </div>
-</template>
-
 <script setup>
+import { inject } from 'vue'
 import { useInventoryStore } from '../../stores/useInventoryStore'
 import InventoryItem from './InventoryItem.vue'
 import SortIndicator from './SortIndicator.vue'
 
 const store = useInventoryStore()
-const parent = inject('parent')
+const emit = defineEmits(['update'])
+
+function handleUpdate(product) {
+  emit('update', product)
+}
 
 function setSort(field) {
   if (store.sortBy === field) {
@@ -65,12 +24,55 @@ function openModal(product) {
   parent.openModal(product)
 }
 </script>
+<template>
+  <div class="inventory-list">
+    <div class="list-header">
+      <p v-if="store.showLowStockOnly" class="low-stock-warning">
+        Showing only low stock items ({{ store.filteredProducts.length }})
+      </p>
+      <p v-else>
+        Showing {{ store.filteredProducts.length }} products
+      </p>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th @click="setSort('name')">
+            Product Name
+            <SortIndicator field="name" />
+          </th>
+          <th @click="setSort('category')">
+            Category
+            <SortIndicator field="category" />
+          </th>
+          <th @click="setSort('price')">
+            Price
+            <SortIndicator field="price" />
+          </th>
+          <th @click="setSort('stock')">
+            Stock
+            <SortIndicator field="stock" />
+          </th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <InventoryItem v-for="product in store.filteredProducts" :key="product.id" :product="product"
+          @update="handleUpdate" />
+      </tbody>
+    </table>
+  </div>
+</template>
+
 
 <style scoped>
 .inventory-list {
   background: white;
   border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   overflow: hidden;
 }
 
@@ -90,7 +92,8 @@ table {
   border-collapse: collapse;
 }
 
-th, td {
+th,
+td {
   padding: 12px 15px;
   text-align: left;
   border-bottom: 1px solid #ddd;

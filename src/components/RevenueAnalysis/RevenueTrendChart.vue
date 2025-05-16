@@ -1,9 +1,3 @@
-<template>
-  <div class="chart-container">
-    <canvas ref="chartCanvas"></canvas>
-  </div>
-</template>
-
 <script setup>
 import { ref, onMounted, watch } from 'vue'
 import { useRevenueStore } from '../../stores/useRevenueStore'
@@ -17,14 +11,14 @@ function renderChart() {
   if (chartInstance) {
     chartInstance.destroy()
   }
-  
+
   const ctx = chartCanvas.value.getContext('2d')
-  const labels = store.trendData.map(item => 
-    store.selectedPeriod === 'monthly' ? item.month : 
-    store.selectedPeriod === 'weekly' ? item.week : 
-    item.date
+  const labels = store.trendData.map(item =>
+    store.selectedPeriod === 'monthly' ? item.month :
+      store.selectedPeriod === 'weekly' ? item.week :
+        item.date
   )
-  
+
   chartInstance = new Chart(ctx, {
     type: 'line',
     data: {
@@ -85,12 +79,19 @@ onMounted(renderChart)
 watch(() => [store.selectedPeriod, store.selectedCategory], renderChart)
 </script>
 
+<template>
+  <div class="chart-container">
+    <canvas ref="chartCanvas"></canvas>
+  </div>
+</template>
+
+
 <style scoped>
 .chart-container {
   background: white;
   padding: 20px;
   border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   margin-top: 20px;
 }
 </style>

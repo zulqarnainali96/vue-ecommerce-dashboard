@@ -1,15 +1,3 @@
-<template>
-  <div class="inventory-management">
-    <h1>Inventory Management</h1>
-    
-    <InventoryFilter />
-    
-    <InventoryList />
-    
-    <InventoryUpdateModal v-if="showModal" @close="showModal = false" :product="selectedProduct" />
-  </div>
-</template>
-
 <script setup>
 import { ref } from 'vue'
 import InventoryList from '../components/InventoryManagement/InventoryList.vue'
@@ -26,6 +14,16 @@ function openModal(product) {
 
 defineExpose({ openModal })
 </script>
+
+<template>
+  <div class="inventory-management">
+    <h1>Inventory Management</h1>
+    <InventoryFilter />
+    <InventoryList @update="openModal" />
+    <InventoryUpdateModal v-if="showModal" @close="showModal = false" :product="selectedProduct" />
+  </div>
+</template>
+
 
 <style scoped>
 .inventory-management {

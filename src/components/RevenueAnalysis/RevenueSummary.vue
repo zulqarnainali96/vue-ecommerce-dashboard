@@ -1,3 +1,9 @@
+<script setup>
+import { useRevenueStore } from '../../stores/useRevenueStore'
+
+const store = useRevenueStore()
+</script>
+
 <template>
   <div class="revenue-summary">
     <div class="summary-card">
@@ -23,11 +29,6 @@
   </div>
 </template>
 
-<script setup>
-import { useRevenueStore } from '../../stores/useRevenueStore'
-
-const store = useRevenueStore()
-</script>
 
 <style scoped>
 .revenue-summary {

@@ -1,22 +1,3 @@
-<template>
-  <div class="image-uploader">
-    <div v-if="!previewUrl" class="upload-area" @click="triggerFileInput">
-      <span>Click to upload image</span>
-      <input 
-        type="file" 
-        ref="fileInput"
-        accept="image/*"
-        @change="handleFileChange"
-        style="display: none"
-      />
-    </div>
-    <div v-else class="preview-area">
-      <img :src="previewUrl" alt="Product preview" />
-      <button @click="removeImage" class="remove-btn">Remove</button>
-    </div>
-  </div>
-</template>
-
 <script setup>
 import { ref, watch } from 'vue'
 
@@ -50,6 +31,21 @@ function removeImage() {
   fileInput.value.value = ''
 }
 </script>
+
+<template>
+  <div class="image-uploader">
+    <div v-if="!previewUrl" class="upload-area" @click="triggerFileInput">
+      <span>Click to upload image</span>
+      <input type="file" ref="fileInput" accept="image/*" @change="handleFileChange" style="display: none" />
+    </div>
+    <div v-else class="preview-area">
+      <img :src="previewUrl" alt="Product preview" />
+      <button @click="removeImage" class="remove-btn">Remove</button>
+    </div>
+  </div>
+</template>
+
+
 
 <style scoped>
 .image-uploader {

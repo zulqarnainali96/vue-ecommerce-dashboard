@@ -1,32 +1,3 @@
-<template>
-  <div class="modal-overlay" @click.self="$emit('close')">
-    <div class="modal-content">
-      <button class="close-btn" @click="$emit('close')">&times;</button>
-      
-      <h2>Update Inventory</h2>
-      <p class="product-name">{{ product.name }}</p>
-      
-      <div class="form-group">
-        <label for="stock">Current Stock:</label>
-        <input 
-          type="number" 
-          id="stock" 
-          v-model.number="stockValue"
-          min="0"
-        />
-        <p class="min-stock">Minimum stock level: {{ product.minStock }}</p>
-      </div>
-      
-      <div class="form-actions">
-        <button @click="$emit('close')">Cancel</button>
-        <button @click="updateStock" :disabled="stockValue === product.stock">
-          Update
-        </button>
-      </div>
-    </div>
-  </div>
-</template>
-
 <script setup>
 import { ref, watch } from 'vue'
 import { useInventoryStore } from '../../stores/useInventoryStore'
@@ -52,6 +23,32 @@ function updateStock() {
   emit('close')
 }
 </script>
+
+<template>
+  <div class="modal-overlay" @click.self="$emit('close')">
+    <div class="modal-content">
+      <button class="close-btn" @click="$emit('close')">&times;</button>
+
+      <h2>Update Inventory</h2>
+      <p class="product-name">{{ product.name }}</p>
+
+      <div class="form-group">
+        <label for="stock">Current Stock:</label>
+        <input type="number" id="stock" v-model.number="stockValue" min="0" />
+        <p class="min-stock">Minimum stock level: {{ product.minStock }}</p>
+      </div>
+
+      <div class="form-actions">
+        <button @click="$emit('close')">Cancel</button>
+        <button @click="updateStock" :disabled="stockValue === product.stock">
+          Update
+        </button>
+      </div>
+    </div>
+  </div>
+</template>
+
+
 
 <style scoped>
 .modal-overlay {

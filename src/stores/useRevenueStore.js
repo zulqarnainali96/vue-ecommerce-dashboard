@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import { demoData } from '../data/demoData'
+import { demoData } from '../data/data'
 import { computed, ref } from 'vue'
 
 export const useRevenueStore = defineStore('revenue', () => {

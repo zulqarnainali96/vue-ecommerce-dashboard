@@ -1,3 +1,15 @@
+<script setup>
+defineProps({
+  product: {
+    type: Object,
+    required: true
+  }
+})
+
+defineEmits(['update'])
+</script>
+
+
 <template>
   <tr :class="{ 'low-stock': product.stock < product.minStock }">
     <td>
@@ -28,16 +40,6 @@
   </tr>
 </template>
 
-<script setup>
-defineProps({
-  product: {
-    type: Object,
-    required: true
-  }
-})
-
-defineEmits(['update'])
-</script>
 
 <style scoped>
 tr.low-stock {

@@ -1,9 +1,7 @@
 <template>
   <div class="revenue-analysis">
     <h1>Revenue Analysis</h1>
-    
     <RevenueSummary />
-    
     <div class="filters">
       <RevenueCategoryFilter />
       <div class="period-toggle">

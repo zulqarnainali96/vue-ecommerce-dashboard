@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import { demoData } from '../data/demoData'
+import { demoData } from '../data/data'
 import { computed, ref } from 'vue'
 
 export const useInventoryStore = defineStore('inventory', () => {
@@ -15,12 +15,10 @@ export const useInventoryStore = defineStore('inventory', () => {
   const filteredProducts = computed(() => {
     let filtered = [...products.value]
 
-    // Apply category filter
     if (selectedCategory.value !== 'all') {
       filtered = filtered.filter((p) => p.category === selectedCategory.value)
     }
 
-    // Apply search filter
     if (searchQuery.value) {
       const query = searchQuery.value.toLowerCase()
       filtered = filtered.filter(
@@ -28,12 +26,10 @@ export const useInventoryStore = defineStore('inventory', () => {
       )
     }
 
-    // Apply low stock filter
     if (showLowStockOnly.value) {
       filtered = filtered.filter((p) => p.stock < p.minStock)
     }
 
-    // Apply sorting
     filtered.sort((a, b) => {
       let comparison = 0
       if (sortBy.value === 'name') {

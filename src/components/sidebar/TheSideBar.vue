@@ -20,19 +20,14 @@
         <span class="icon">📦</span>
         <span class="text">Products</span>
       </router-link>
-      <router-link to="/settings" class="nav-item" active-class="active">
+      <!-- <router-link to="/settings" class="nav-item" active-class="active">
         <span class="icon">⚙️</span>
         <span class="text">Settings</span>
-      </router-link>
+      </router-link> -->
     </nav>
   </div>
 </template>
 
-<script>
-export default {
-  name: 'DashboardLayout',
-}
-</script>
 
 <style scoped>
 /* Dashboard Container */

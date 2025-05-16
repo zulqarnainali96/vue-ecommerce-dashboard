@@ -1,6 +1,7 @@
 import { defineStore } from 'pinia'
-import { demoData } from '../data/demoData'
+import { demoData } from '../data/data'
 import { ref } from 'vue'
+import { useInventoryStore } from './useInventoryStore'
 
 export const useProductStore = defineStore('product', () => {
   const formData = ref({
