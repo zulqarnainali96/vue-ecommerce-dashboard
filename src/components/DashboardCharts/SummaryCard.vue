@@ -4,6 +4,7 @@ import { computed } from 'vue'
 const props = defineProps({
   title: String,
   value: [Number, String],
+  default: 0,
   icon: String,
   color: {
     type: String,
@@ -11,11 +12,9 @@ const props = defineProps({
   }
 })
 
-const formattedValue = computed(() => {
-  if (typeof props.value === 'number') {
-    return props.value.toLocaleString()
-  }
-  return props.value
+
+const displayValue = computed(() => {
+  return props.value === undefined ? 'N/A' : props.value
 })
 </script>
 
@@ -24,9 +23,9 @@ const formattedValue = computed(() => {
     <div class="icon">
       <span class="material-icons">{{ icon }}</span>
     </div>
-    <div class="content">
+     <div class="content">
       <h3>{{ title }}</h3>
-      <p>{{ formattedValue }}</p>
+      <p>{{ displayValue }}</p>  <!-- Use displayValue instead of direct value -->
     </div>
   </div>
 </template>
